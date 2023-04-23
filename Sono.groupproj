@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0FC525F4-E12A-433B-8586-203D21EEDCED}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Sonofon.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Sonofon">
+        <MSBuild Projects="Sonofon.dproj"/>
+    </Target>
+    <Target Name="Sonofon:Clean">
+        <MSBuild Projects="Sonofon.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sonofon:Make">
+        <MSBuild Projects="Sonofon.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Sonofon"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Sonofon:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Sonofon:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
